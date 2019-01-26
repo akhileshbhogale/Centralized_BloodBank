@@ -3,7 +3,6 @@ package controller.servlets;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,12 +15,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.beans.BloodBagTypes;
-import model.beans.BloodGroups;
+import model.beans.UpcomingDonationCamps;
 
 
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet {
+
+
+@WebServlet("/upcomingdonationcamps")
+public class UpcomingCamps extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	Connection con;
@@ -33,38 +33,27 @@ public class HomeServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		//PreparedStatement ps=null;
+		
 		CallableStatement cs=null;
 		ResultSet rs=null;
-		List<String> city_list = new ArrayList<>();
-		List<BloodGroups> bg_list = new ArrayList<>();
-		List<BloodBagTypes> bbt_list = new ArrayList<>();
+		List<UpcomingDonationCamps> camp_list = new ArrayList<>();
+		
 		
 		try {
-			//ps=con.prepareStatement("select distinct city from addresses where type_id=? or type_id=?");
-			//ps.setInt(1, 2);
-			//ps.setInt(2, 3);
-			
-			cs=con.prepareCall("{call sp_FetchCities()}");
+			cs=con.prepareCall("{call sp_FetchUpcomingCamps()}");
 			rs=cs.executeQuery();
 			
 			while(rs.next())
 			{
-				String city = new String(rs.getString(1));
-				System.out.println(city);
-				city_list.add(city);
+				UpcomingDonationCamps camp = new UpcomingDonationCamps(rs.getString(1),rs.getString(2),rs.getDate(3));
+				System.out.println(camp);
+				camp_list.add(camp);
 			}
 						
-			getServletContext().setAttribute("city_list",city_list);
+			request.getSession().setAttribute("camp_list",camp_list);
+			System.out.println(camp_list);
+			request.getRequestDispatcher("/ShowDonationCamps.jsp").forward(request, response);
 			
-			
-			
-			
-			
-			
-			//request.getSession().setAttribute("c_list", c_list);
-			request.getRequestDispatcher("/ViewStocks.jsp").forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -78,10 +67,7 @@ public class HomeServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}*/
-		
-		request.getRequestDispatcher("/ViewStocks.jsp").forward(request, response);
+		}
 		
 	}
 
