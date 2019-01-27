@@ -82,27 +82,36 @@ function ajaxFetch() {
 	<div class="container-fluid">
 	
 		<jsp:include page="Header.jsp" />
-
-		<select name="cities" id="cities">	  `	
-		  	<c:forEach items="${city_list}" var="city">
-			    <option value="${city}">${city}</option>
-			</c:forEach>
-		</select>
 		
+		<form class="form-inline">
 			
-		<select name="blood_groups" id="blood_groups">	  `	
-		  	<c:forEach items="${bg_list}" var="bg">
-			    <option value="${bg.blood_group_id}">${bg.blood_group}</option>
-			</c:forEach>
-		</select>
-		
-		<select name="blood_bag_types" id="blood_bag_types">	  `	
-		  	<c:forEach items="${bbt_list}" var="bbt">
-			    <option value="${bbt.blood_bag_type_id}">${bbt.blood_bag_type}</option>
-			</c:forEach>
-		</select>
-		
-		
+			<select name="cities" id="cities" class="form-control">	
+				<option>Select City</option>	
+			  	<c:forEach items="${city_list}" var="city">
+				    <option value="${city}">${city}</option>
+				</c:forEach>
+			</select>
+			
+			
+			
+			<select name="blood_groups" id="blood_groups" class="form-control">	
+				<option>Select Blood Group</option>	
+			  	<c:forEach items="${bg_list}" var="bg">
+				    <option value="${bg.blood_group_id}">${bg.blood_group}</option>
+				</c:forEach>
+			</select>
+			
+			
+			
+			<select name="blood_bag_types" id="blood_bag_types" class="form-control">
+				<option>Select Blood Bag Type</option>	
+			  	<c:forEach items="${bbt_list}" var="bbt">
+				    <option value="${bbt.blood_bag_type_id}">${bbt.blood_bag_type}</option>
+				</c:forEach>
+			</select>
+			
+			
+		</form>
 	<table class="table table-striped">
 	    <thead>
 	      <tr>
