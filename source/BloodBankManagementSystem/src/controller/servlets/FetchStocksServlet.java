@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 
 @WebServlet("/fetchstocks")
 public class FetchStocksServlet extends HttpServlet {
@@ -32,11 +35,13 @@ public class FetchStocksServlet extends HttpServlet {
 		CallableStatement cs=null;
 		ResultSet rs=null;
 		
-		JSONObject obj = new JSONObject();
+		CallableStatement cs2=null;
+		ResultSet rs2=null;
 		
-		String str="[";
 		
+		JSONArray arr=new JSONArray();
 		
+			
 		try {
 			
 			cs=con.prepareCall("{call sp_FetchBloodBankStocks(?,?,?)}");
@@ -47,24 +52,47 @@ public class FetchStocksServlet extends HttpServlet {
 			
 			while(rs.next())
 			{
-				str+='{';
-						str+="seller_name:"+rs.getString(2)+",";
-						str+="blood_group:"+rs.getString(3)+",";
-						str+="blood_bag_type:"+rs.getString(4)+",";
-						str+="quantity:"+rs.getString(5)+",";
-						str+="price:"+rs.getString(6)+",";
-						str+="stock_id:"+rs.getString(1);
-				str+="},";
+				JSONObject obj = new JSONObject();
+				
+				obj.put("seller_name", rs.getString(2));
+				obj.put("blood_group", rs.getString(3));
+				obj.put("blood_bag_type", rs.getString(4));
+				obj.put("quantity", rs.getString(5));
+				obj.put("price", rs.getString(6));
+				obj.put("stock_id", rs.getString(1));
+				
+				
+				arr.add(obj);
+								
 			}
 			
-			if (str.length() > 1 && str.charAt(str.length() - 1) == ',') {
-		        str = str.substring(0, str.length() - 1);
-		    }
 			
-			str+="]";
-			System.out.println(str);
+			cs2=con.prepareCall("{call sp_FetchHospitalStocks(?,?,?)}");
+			cs2.setString(1, request.getParameter("city"));
+			cs2.setInt(2, Integer.parseInt(request.getParameter("blood_group")));
+			cs2.setInt(3, Integer.parseInt(request.getParameter("blood_bag_type")));
+			rs2=cs2.executeQuery();
+			
+			while(rs2.next())
+			{
+				System.out.println("fetching hospital stocks");
+				JSONObject obj = new JSONObject();
+				
+				obj.put("seller_name", rs2.getString(2));
+				obj.put("blood_group", rs2.getString(3));
+				obj.put("blood_bag_type", rs2.getString(4));
+				obj.put("quantity", rs2.getString(5));
+				obj.put("price", rs2.getString(6));
+				obj.put("stock_id", rs2.getString(1));
+				
+				
+				arr.add(obj);
+								
+			}
+			
+			System.out.println(arr.toJSONString());
 			response.setContentType("text/plain");
-			response.getWriter().write(str);
+			response.getWriter().write(arr.toJSONString());
 								
 			
 		} catch (SQLException e) {
@@ -76,6 +104,8 @@ public class FetchStocksServlet extends HttpServlet {
 			try {
 				rs.close();
 				cs.close();
+				rs2.close();
+				cs2.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

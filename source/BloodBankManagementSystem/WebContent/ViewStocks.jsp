@@ -18,44 +18,59 @@
   
 
 <script>
+
+function ajaxFetch() {
+	//alert("Hi");
+	$.ajax({
+		url : 'fetchstocks',
+		data : {
+			city : $('#cities').val(),
+			blood_group:$('#blood_groups').val(),
+			blood_bag_type:$('#blood_bag_types').val()
+		},
+		success : function(responseText) {
+			
+			var jsonArray = JSON.parse(responseText);
+			var str="";
+			$.each(jsonArray, function(index,jsonObject){
+				str+="<tr>";
+					str+="<td>";
+	    				str+=""+jsonObject.seller_name;
+	    			str+="</td>";
+	    			
+	    			str+="<td>";
+    					str+=""+jsonObject.blood_group;
+    				str+="</td>";
+    			
+    				str+="<td>";
+						str+=""+jsonObject.blood_bag_type;
+					str+="</td>";
+					
+					str+="<td>";
+	    				str+=""+jsonObject.quantity;
+	    			str+="</td>";
+	    			
+	    			str+="<td>";
+    					str+=""+jsonObject.price;
+    				str+="</td>";
+    			
+    				str+="<td>";
+    					str+= "<div class='checkbox'><input type='checkbox' value='"+jsonObject.stock_id+"'></div>"
+					str+="</td>";
+									    
+			    str+="</tr>";
+			});
+			$('#stocks').html(str);
+		}
+	});
+}
 	
 	$(document).ready(function() {
-		alert("ready");
-		$('#cities').change(function() {
-			alert("Hi");
-			$.ajax({
-				url : 'fetchstocks',
-				data : {
-					city : $('#cities').val(),
-					blood_group:$('#blood_groups').val(),
-					blood_bag_type:$('#blood_bag_types').val()
-				},
-				success : function(responseText) {
-					
-					var jsonArray = JSON.parse(responseText);
-					var str="";
-					$.each(jsonArray, function(index,jsonObject){
-						str+="<tr>";
-					    $.each(jsonObject, function(key,val){
-					        //console.log("key : "+key+" ; value : "+val);
-					    	if(key=="stock_id")
-					    	{
-					    		str+= "<div class='checkbox'><input type='checkbox' value='"+val+"'></div>"
-					    	}
-					    	else
-					    	{
-					    		str+="<td>";
-					    			str+=""+val;
-					    		str+="</td>";
-					    	}
-					        
-					    });
-					    str+="</tr>";
-					});
-					$('#stocks').html(str);
-				}
-			});
-		});
+		
+		$('#cities').change(ajaxFetch);
+		$('#blood_groups').change(ajaxFetch);
+		$('#blood_bag_types').change(ajaxFetch);
+		
 	});
 	
 </script>
@@ -65,6 +80,8 @@
 <body>
 
 	<div class="container-fluid">
+	
+		<jsp:include page="Header.jsp" />
 
 		<select name="cities" id="cities">	  `	
 		  	<c:forEach items="${city_list}" var="city">
