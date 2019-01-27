@@ -1,5 +1,7 @@
 package model.beans;
 
+import java.sql.Date;
+
 public class DonationCamps {
 	private int camp_id;
 	private String organizer_email,camp_venue,camp_timing;
