@@ -1,5 +1,7 @@
 package model.beans;
 
+import java.sql.Date;
+
 public class Orders {
 	private int order_id,stock_id,quantity,price,address_id;
 	private String order_type,buyer_email;

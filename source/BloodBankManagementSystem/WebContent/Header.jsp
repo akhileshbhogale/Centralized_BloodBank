@@ -24,7 +24,7 @@ Latest compiled JavaScript
 <body>
 	<div class="container-fluid">
 		<%
-			int type_id=3;
+			int type_id=-1;
 		HttpSession sess=request.getSession(false);
 		Integer i=(Integer)request.getSession(false).getAttribute("type_id");
 		
@@ -43,11 +43,28 @@ Latest compiled JavaScript
 			    <div class="navbar-header">
 			      <a class="navbar-brand" href="#">Blood Bank</a>
 			    </div>
-			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="#">Home</a></li>
-			      <li><a href="#">Login</a></li>
-			      <li><a href="#">Register</a></li>			      
-			    </ul>
+			    <form class="form-inline" action="logincheck" method="post">
+			    	
+				    <ul class="nav navbar-nav">
+				      <li class="active"><a href="#">Home</a></li>
+				      <li>
+				      	<div class="form-group">
+				    		<input name="emailid" placeholder="EmailID" type="text" class="form-control">
+				    	</div>				      
+				      </li>
+				      <li>
+				      	<div class="form-group">
+				    		<input name="pwd" placeholder="Password" type="password" class="form-control">
+				    	</div>				      
+				      </li>
+				      <li>
+				      	<div class="form-group">
+				    		<input name="Submit" value="Login" type="submit" class="form-control">
+				    	</div>	
+				      </li>
+				      <li><a href="RegistrationPage.jsp">Register</a></li>			      
+				    </ul>
+			    </form>
 			  
 			</nav>
 	  
@@ -62,13 +79,13 @@ Latest compiled JavaScript
 			      <a class="navbar-brand" href="#">Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="#">Home</a></li>
+			      <li class="active"><a href="home">Home</a></li>
 			      <li><a href="#">Dashboard</a></li>
-			       <li><a href="#">History</a></li>
+			       <li><a href="History.jsp">History</a></li>
 			      <li><a href="#">Profile</a></li>	
-			      <li><a href="#">View Stocks</a></li>
+			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 			      
-			       <li><a href="#">Logout</a></li>
+			       <li><a href="logout">Logout</a></li>
 			      
 			      			      
 			    </ul>
