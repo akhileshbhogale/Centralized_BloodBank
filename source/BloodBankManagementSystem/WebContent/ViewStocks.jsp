@@ -55,7 +55,7 @@ function ajaxFetch() {
     				str+="</td>";
     			
     				str+="<td>";
-    					str+= "<div class='checkbox'><input type='checkbox' value='"+jsonObject.stock_id+"'></div>"
+    					str+= "<div class='checkbox'><input type='checkbox' name='stock_id_list' value='"+jsonObject.stock_id+"'></div>"
 					str+="</td>";
 									    
 			    str+="</tr>";
@@ -112,21 +112,35 @@ function ajaxFetch() {
 			
 			
 		</form>
-	<table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th>Seller Name</th>
-	        <th>Blood Group</th>
-	        <th>Blood Bag Type</th>
-	        <th>Available Quantity</th>
-	        <th>Price per Unit</th>
-	        <th>Select</th>
-	      </tr>
-	    </thead>
-	    <tbody id="stocks">
-	      
-	    </tbody>
-	  </table>
-	</div>
+		
+		
+		<form>
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>Seller Name</th>
+			        <th>Blood Group</th>
+			        <th>Blood Bag Type</th>
+			        <th>Available Quantity</th>
+			        <th>Price per Unit</th>
+			        <th>Select</th>
+			      </tr>
+			    </thead>
+			    <tbody id="stocks">
+			      
+			    </tbody>
+			  </table>
+			  
+			  <div class="row">
+			  	<div class="col-sm-4 col-md-4 col-xs-12"></div>
+			  	<div class="col-sm-2 col-md-2 col-xs-12">
+			  		<button class="btn-primary btn-lg btn-block" formaction="addtocart" type="submit">Add To Cart</button>
+			  	</div>
+			  	<div class="col-sm-2 col-md-2 col-xs-12">
+			  		<button class="btn-primary btn-lg btn-block" formaction="checkout">Checkout</button>
+			  	</div>
+			  	<div class="col-sm-4 col-md-4 col-xs-12"></div>
+			</div>
+		</form>
 </body>
 </html>

@@ -49,7 +49,9 @@ Latest compiled JavaScript
 				      <li class="active"><a href="#">Home</a></li>
 				      <li>
 				      	<div class="form-group">
+				      		
 				    		<input name="emailid" placeholder="EmailID" type="text" class="form-control">
+				    		
 				    	</div>				      
 				      </li>
 				      <li>
@@ -62,9 +64,12 @@ Latest compiled JavaScript
 				    		<input name="Submit" value="Login" type="submit" class="form-control">
 				    	</div>	
 				      </li>
-				      <li><a href="RegistrationPage.jsp">Register</a></li>			      
+				      <li><a href="RegistrationPage.jsp">Register</a></li>
+				      <li><h4 class="text-danger">${cookie.error_cookie.value}</h4></li>			      
 				    </ul>
+				    
 			    </form>
+			    
 			  
 			</nav>
 	  
@@ -72,7 +77,7 @@ Latest compiled JavaScript
 	  </c:if>
 	
 	  <c:if test="${typeidAttribute =='1'}">
-			<h1>WELCOME ${session.userobj.name} TO OUR ONLINE BLOOD BANK!!</h1>	
+			<h1>WELCOME ${curr_user.user_name}!!</h1>	
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
