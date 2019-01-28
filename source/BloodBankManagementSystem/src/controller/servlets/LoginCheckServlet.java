@@ -15,11 +15,13 @@ import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.DonationHistory;
+import model.beans.Users;
 
 
 @WebServlet("/logincheck")
@@ -37,7 +39,9 @@ public class LoginCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		CallableStatement cs=null;
-		//ResultSet rs=null;
+		
+		CallableStatement cs2=null;
+		ResultSet rs2=null;
 		
 		try {
 			cs=con.prepareCall("{call sp_CheckUserDetails(?,?,?)}");
@@ -55,9 +59,46 @@ public class LoginCheckServlet extends HttpServlet {
 			int type_id=cs.getInt(3);
 			System.out.println(type_id);
 			
+					
 			request.getSession().setAttribute("type_id", type_id);
 			
-			request.getRequestDispatcher("/home").forward(request, response);
+			if(type_id==-1)
+			{
+				Cookie c= new Cookie("error_cookie", "Login_Failed");
+				response.addCookie(c);
+			}
+			else
+			{
+				
+				
+				
+				if(type_id!=4)
+				{
+					cs2=con.prepareCall("{call sp_FetchUserDetails(?,?)}");
+					cs2.setString(1,(String)request.getParameter("emailid"));
+					cs2.setInt(2,type_id);
+					
+					rs2=cs2.executeQuery();
+					
+					while(rs2.next())
+					{
+						Users current_user = new Users(rs2.getString(1),rs2.getString(2),rs2.getString(3));
+						request.getSession().setAttribute("curr_user", current_user);
+					}
+					
+				}
+				else
+				{
+					request.getSession().setAttribute("admin_email", (String)request.getParameter("emailid"));
+				}
+				
+				Cookie c= new Cookie("error_cookie", "");
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
+			
+			//request.getRequestDispatcher("/home").forward(request, response);
+			response.sendRedirect("home");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,7 +107,8 @@ public class LoginCheckServlet extends HttpServlet {
 		finally
 		{
 			try {
-				//rs.close();
+				rs2.close();
+				cs2.close();
 				cs.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

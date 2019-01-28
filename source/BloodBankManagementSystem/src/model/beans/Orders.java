@@ -1,11 +1,12 @@
 package model.beans;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 public class Orders {
 	private int order_id,stock_id,quantity,price,address_id;
 	private String order_type,buyer_email;
-	private Date order_date;
+	private Timestamp order_date;
 	
 	public Orders() {
 		super();
@@ -13,7 +14,7 @@ public class Orders {
 	}
 
 	public Orders(int order_id, int stock_id, int quantity, int price, int address_id, String order_type,
-			String buyer_email, Date order_date) {
+			String buyer_email, Timestamp order_date) {
 		super();
 		this.order_id = order_id;
 		this.stock_id = stock_id;
@@ -88,11 +89,11 @@ public class Orders {
 		this.buyer_email = buyer_email;
 	}
 
-	public Date getOrder_date() {
+	public Timestamp getOrder_date() {
 		return order_date;
 	}
 
-	public void setOrder_date(Date order_date) {
+	public void setOrder_date(Timestamp order_date) {
 		this.order_date = order_date;
 	}
 	
