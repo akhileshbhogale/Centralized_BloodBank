@@ -29,13 +29,13 @@ public class AddAdminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CallableStatement cs=null;
-		//ResultSet rs=null;
+		ResultSet rs=null;
 		//List<UpcomingDonationCamps> camp_list = new ArrayList<>();
 		
 		
 		try {
-			//LoginDetails admin = new LoginDetails(4,request.getParameter("admin_email"),request.getParameter("admin_password"));
-			//System.out.println(admin);
+			LoginDetails admin = new LoginDetails(4,request.getParameter("admin_email"),request.getParameter("admin_password"));
+			System.out.println(admin);
 			try {
 				cs=con.prepareCall("{call sp_AddLoginDetails(?,?,?)}");
 				cs.setInt(1, 4);

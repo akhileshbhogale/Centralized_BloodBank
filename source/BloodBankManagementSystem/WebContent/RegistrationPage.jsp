@@ -4,70 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Registration Page</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
   <script src="js/jquery-ui.min.js"></script>
-  <script >
-  	
-  $(document).ready(function () {
-      $.validator.addMethod("alphaonly", function (value, element) {
-          return  /^([a-zA-Z]{1,50})$/.test(value);
-          });
-
-      $.validator.addMethod("special", function (value, element) {
-          return /[^a-zA-Z0-9]/.test(value);
-      });
-      $("form[name='registration']").validate({
-          rules: {
-              nm: 
-                  {
-                      required: true,
-                      alphaonly: true
-                  },
-             
-              email_id: 
-                  {
-                      required: true,
-                      email: true
-                  },
-              pwd:
-                  {
-                      required: true,
-                      minlength: 10,
-                      special: true
-                  }
-          },
-          messages: {
-              nm:
-                  {
-                      required: "Name is required",
-                      alphaonly: "only alphabets,spaces and max length should be 50 characters!"
-                  },
-             
-              email_id: 
-                  {
-                      required: "Email required",
-                      email: "your email is not valid"
-                  },
-              pwd: 
-                  {
-                      required: "Password is required",
-                      minlength: "min length is 10",
-                      special: "one special character required"
-                  }
-          },
-          submitHandler: function (form) {
-              alert("form is getting submitted");
-              form.submit();
-          }
-          
-      });
-  });
+  <script src="js/jquery.validate.js"></script>
+  -->
   
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery-3.3.1.min.js"></script>
+
+  
+<script src="js/jquery-ui.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+  
+  <script src="js/RegistrationPageValidation.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		
+  		//alert("Hi");
+  	});
   </script>
 
 
@@ -82,35 +42,61 @@
 			<div class="col-md-2 col-sm-2 col-xs-12"></div>
 			
 			<div class="col-md-8 col-sm-8 col-xs-12">
-		        <form name="registration" class="form-container" action="">		               	
+		        <form name="registration" id="registration" class="form-container" action="register" method="post">
+		        
+		        <!-- ---------------------User Type--------------------------- -->
+				            
+				            <div class="form-group">
+				            	<label for="user_type">Select Your User Type : </label>
+				                <select name="user_type" id="user_type" class="form-control" required>	
+									<option>Select Your User Type</option>	
+								  	<option value="1">Individual User</option>
+								  	<option value="2">Hospital</option>
+								  	<option value="3">Blood Bank</option>
+									
+								</select>
+				            </div>
+				            		               	
 		            		
 		       	<!-- ---------------------Email Id--------------------------- -->
 				            
 				            <div class="form-group">
 				                <label for="email_id">Email ID : </label>
-				                <input type="email" name="email_id" class="form-control" />
+				                <input type="email" name="email_id" id="email_id" class="form-control" />
 				            </div>
 				            
 				<!-- ---------------------Name--------------------------- -->
 				
 				            <div class="form-group">
 				                <label for="nm">Name : </label>
-				                <input type="text" name="nm" class="form-control" />
+				                <input type="text" name="nm" id="nm" class="form-control" />
 				            </div>
 				            
 				<!-- ---------------------Password--------------------------- -->
 				            
 				            <div class="form-group">
 				                <label for="pwd">Password : </label>
-				                <input type="password" name="pwd" class="form-control" />
+				                <input type="password" name="pwd" id="pwd" class="form-control" />
 				            </div>
 				            
 				<!-- ---------------------Confirm Password--------------------------- -->
 				            
 				            <div class="form-group">
 				                <label for="cnfm_pwd">Confirm Password : </label>
-				                <input type="password" id="cnfm_pwd" class="form-control" />
+				                <input type="password" name="cnfm_pwd" id="cnfm_pwd" class="form-control" />
 				            </div>
+				            
+				            
+				            
+				<!-- ---------------------Confirm Password--------------------------- -->
+				            
+				            <div class="form-group">
+				                <label for="contact">Contact : </label>
+				                <input type="number" name="contact" id="contact" class="form-control" />
+				            </div>
+				            
+				            
+				            
 				        
 				<!-- ---------------------Address--------------------------- -->            
 		            
@@ -118,12 +104,12 @@
 		            	
 			            <div class="form-group col-md-6 col-sm-6 col-xs-12">
 			                <label for="address">Enter Address : </label>
-			                <textarea rows=4 id="address" class="form-control" ></textarea>
+			                <textarea rows=4 name="address" id="address" class="form-control" ></textarea>
 			            </div>
 			            
 			            <div class="form-group col-md-3 col-sm-3 col-xs-12">
 			                <label for="city">City : </label>
-			                <input type="text" id="city" class="form-control">
+			                <input type="text" name="city" id="city" class="form-control">
 			            </div>
 			            <div class="form-group col-md-3 col-sm-3 col-xs-12">
 			            <br/>

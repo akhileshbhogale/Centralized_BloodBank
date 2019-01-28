@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.beans.Users;
+
 
 @WebServlet("/organizeDonationCamp")
 public class OrganizeDonationCampServlet extends HttpServlet {
@@ -26,39 +28,42 @@ public class OrganizeDonationCampServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		CallableStatement cs=null;
-		//ResultSet rs=null;
-		//List<UpcomingDonationCamps> camp_list = new ArrayList<>();
 		
 		
-		try {
-			//LoginDetails admin = new LoginDetails(4,request.getParameter("admin_email"),request.getParameter("admin_password"));
-			//System.out.println(admin);
+			
+		
 			try {
+				String user_email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
 				cs=con.prepareCall("{call sp_OrganizeCamp(?,?,?,?)}");
-				cs.setString(1, (String)request.getSession().getAttribute("user_email"));
-				cs.setString(2, request.getParameter("camp_venue"));
-				cs.setString(3, request.getParameter("camp_date"));
-				cs.setString(4, request.getParameter("camp_time"));
+				cs.setString(1, user_email);
+				cs.setString(2, request.getParameter("donation_camp_venue"));
+				cs.setString(3, request.getParameter("donation_camp_date"));
+				System.out.println(request.getParameter("donation_camp_date"));
+				cs.setString(4, request.getParameter("donation_camp_time"));
 				int n = cs.executeUpdate();
+				
+				request.getRequestDispatcher("/CampAdded.jsp").forward(request, response);
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
-			request.getRequestDispatcher("/CampAdded.jsp").forward(request, response);
-		}
-		finally{
-			try {
-				cs.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			finally{
+				try {
+					cs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		}
+			
+			
+			
+			
+		
+		
 	}
 
 	
