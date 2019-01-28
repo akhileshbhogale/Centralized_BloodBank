@@ -35,6 +35,7 @@ private static final long serialVersionUID = 1L;
 			cs=con.prepareCall("{call sp_DeleteAdmin(?)}");
 			cs.setString(1, request.getParameter("admin_email"));
 			int n = cs.executeUpdate();
+			System.out.println("Admin Deleted");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +43,7 @@ private static final long serialVersionUID = 1L;
 		
 		
 		
-		request.getRequestDispatcher("/AdminAdded.jsp").forward(request, response);
+		request.getRequestDispatcher("/AdminDeleted.jsp").forward(request, response);
 	}
 	finally{
 		try {

@@ -41,12 +41,12 @@ Latest compiled JavaScript
 			<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Blood Bank</a>
+			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
 			    </div>
 			    <form class="form-inline" action="logincheck" method="post">
 			    	
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="#">Home</a></li>
+				      <li class="active"><a href="home">Home</a></li>
 				      <li>
 				      	<div class="form-group">
 				      		
@@ -81,13 +81,13 @@ Latest compiled JavaScript
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Blood Bank</a>
+			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li class="active"><a href="home">Home</a></li>
-			      <li><a href="#">Dashboard</a></li>
+			      <li><a href="upcomingdonationcamps">Upcoming Donation Camps</a></li>
 			       <li><a href="History.jsp">History</a></li>
-			      <li><a href="#">Profile</a></li>	
+			      <li><a href="UpdateProfile.jsp">Profile</a></li>	
 			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 			      
 			       <li><a href="logout">Logout</a></li>
@@ -99,21 +99,21 @@ Latest compiled JavaScript
 	  </c:if>
 	  
 	  <c:if test="${typeidAttribute =='2'|| typeidAttribute =='3'}">
-			<h1>WELCOME ${session.userobj.name} TO OUR ONLINE BLOOD BANK!!</h1>	
+			<h1>WELCOME ${curr_user.user_name}!!</h1>	
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Blood Bank</a>
+			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="#">Home</a></li>
+			      <li class="active"><a href="home">Home</a></li>
 			      <li><a href="#">Dashboard</a></li>
 			      <li><a href="#">Update Stocks</a></li>
-			     <li><a href="#">History</a></li>
-			      <li><a href="#">Profile</a></li>	
-			      <li><a href="#">View Stocks</a></li>
-			      <li><a href="#">Organize Donation Camp</a></li>
-			       <li><a href="#">Logout</a></li>
+			     <li><a href="History.jsp">History</a></li>
+			      <li><a href="UpdateProfile.jsp">Profile</a></li>	
+			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
+			      <li><a href="OrganizeDonationCamp.jsp">Organize Donation Camp</a></li>
+			       <li><a href="logout">Logout</a></li>
 			       
 			    </ul>
 			  
@@ -121,7 +121,7 @@ Latest compiled JavaScript
 	  </c:if>
 	  
 	  <c:if test="${type_id=='4'}">
-			<h1>WELCOME ${session.userobj.name} TO OUR ONLINE BLOOD BANK!!</h1>	
+			<h1>WELCOME ADMIN!!</h1>	
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
@@ -129,10 +129,11 @@ Latest compiled JavaScript
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li class="active"><a href="#">Home</a></li>
-			      <li><a href="#">Add Admin</a></li>
-			      <li><a href="#">Remove Admin</a></li>	
-			      <li><a href="#">Add Hospital/Blood Bank</a></li>
-			      <li><a href="#">Remove Hospital/Blood Bank</a></li>		      
+			      <li><a href="AddAdmin.jsp">Add Admin</a></li>
+			      <li><a href="DeleteAdmin.jsp">Remove Admin</a></li>	
+			      <li><a href="RegistrationPage.jsp">Add Hospital/Blood Bank</a></li>
+			      <li><a href="#">Remove Hospital/Blood Bank</a></li>
+			      <li><a href="logout">Logout</a></li>		      
 			    </ul>
 			  
 			</nav>

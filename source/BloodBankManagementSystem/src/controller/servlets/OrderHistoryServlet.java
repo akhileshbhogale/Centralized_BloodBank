@@ -55,10 +55,10 @@ public class OrderHistoryServlet extends HttpServlet {
 			}
 				
 			cs1=con.prepareCall("{call sp_BloodBankOrderHistory(?)}");
-			//cs.setString(1,(String)request.getSession().getAttribute("u_email"));
+			cs.setString(1,(String)request.getSession().getAttribute("u_email"));
 			/*cs.setString(2,(String)request.getSession().getAttribute("u_email"));*/
 			
-			cs.setString(1,"tanjulr@gmail.com");
+			//cs.setString(1,"tanjulr@gmail.com");
 			
 			rs1=cs1.executeQuery();
 			

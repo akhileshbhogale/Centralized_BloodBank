@@ -18,6 +18,7 @@
 <body>
 	<div class="container-fluid">
 	
+	<jsp:include page="Header.jsp" />
 		
 		
 		<div class="page-header">
