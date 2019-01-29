@@ -74,16 +74,25 @@ public class LoginCheckServlet extends HttpServlet {
 				
 				if(type_id!=4)
 				{
-					cs2=con.prepareCall("{call sp_FetchUserDetails(?,?)}");
-					cs2.setString(1,(String)request.getParameter("emailid"));
-					cs2.setInt(2,type_id);
-					
-					rs2=cs2.executeQuery();
-					
-					while(rs2.next())
+					try {
+						cs2=con.prepareCall("{call sp_FetchUserDetails(?,?)}");
+						cs2.setString(1,(String)request.getParameter("emailid"));
+						cs2.setInt(2,type_id);
+						
+						rs2=cs2.executeQuery();
+						
+						while(rs2.next())
+						{
+							Users current_user = new Users(rs2.getString(1),rs2.getString(2),rs2.getString(3));
+							request.getSession().setAttribute("curr_user", current_user);
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}finally
 					{
-						Users current_user = new Users(rs2.getString(1),rs2.getString(2),rs2.getString(3));
-						request.getSession().setAttribute("curr_user", current_user);
+						rs2.close();
+						cs2.close();
 					}
 					
 				}
@@ -97,8 +106,16 @@ public class LoginCheckServlet extends HttpServlet {
 				response.addCookie(c);
 			}
 			
-			//request.getRequestDispatcher("/home").forward(request, response);
-			response.sendRedirect("home");
+			
+			if(type_id==4)
+			{
+				response.sendRedirect("AddAdmin.jsp");
+			}
+			else
+			{
+				response.sendRedirect("home");
+			}
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -107,8 +124,7 @@ public class LoginCheckServlet extends HttpServlet {
 		finally
 		{
 			try {
-				rs2.close();
-				cs2.close();
+				
 				cs.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

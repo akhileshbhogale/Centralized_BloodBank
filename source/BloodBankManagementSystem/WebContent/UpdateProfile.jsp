@@ -16,8 +16,8 @@
 		//alert("ready")
 		$("#update").click(function(){
 			//alert("in funct")
-			alert($("#text_name").nodeName);
-			$("#text_name").text().replaceWith("<input type='text' value='${curr_user.user_name}' />")
+			alert($("#text_name").html());
+			$("#text_name").html("<input type='text' value='${curr_user.user_name}' />")
 			$("#text_contact").html("<input type='text' value='${curr_user.user_email}'/>")
 			$("#done").html("<input type='button' value='Submit'>")
 		})
@@ -37,7 +37,7 @@
 				
 					<tr>
 						<th>Name</th>
-						<td class="text_name">${curr_user.user_name}</td>
+						<td id="text_name">${curr_user.user_name}</td>
 					</tr>
 					<tr>
 						<th>Email</th>
@@ -45,7 +45,7 @@
 					</tr>
 					<tr>
 						<th>Contact </th>
-						<td class="text_contact">${curr_user.user_contact}</td>
+						<td id="text_contact">${curr_user.user_contact}</td>
 					</tr>
 				
 					   <tr>

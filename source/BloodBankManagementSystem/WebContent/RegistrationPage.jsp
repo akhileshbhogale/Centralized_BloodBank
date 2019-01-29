@@ -6,23 +6,105 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration Page</title>
 
-<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
-  <script src="js/jquery.validate.js"></script>
-  -->
   
  <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery-3.3.1.min.js"></script>
-
-  
-<script src="js/jquery-ui.min.js"></script>
-
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.validate.js"></script>
+<script src="js/jquery.validate-1.17.0.js"></script>
   
-  <script src="js/RegistrationPageValidation.js"></script>
+  <script>
+  $(document).ready(function(){
+		alert("bye");
+		
+		$(function() {
+			$.validator.setDefaults({
+		    errorClass: 'help-block',
+		    highlight: function(element) {
+		      $(element)
+		        .closest('.form-group')
+		        .addClass('has-error');
+		    },
+		    unhighlight: function(element) {
+		      $(element)
+		        .closest('.form-group')
+		        .removeClass('has-error');
+		    },
+		    errorPlacement: function (error, element) {
+		      if (element.prop('type') === 'checkbox') {
+		        error.insertAfter(element.parent());
+		      } else {
+		        error.insertAfter(element);
+		      }
+		    }
+		  });
+		
+		  $.validator.addMethod('strongPassword', function(value, element) {
+		    return this.optional(element) 
+		      || value.length >= 6
+		      && /\d/.test(value)
+		      && /[a-z]/i.test(value);
+		  }, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
+		
+		  $("#registration").validate({
+		    rules: {
+		      email_id: {
+		        required: true,
+		        email: true,
+		        remote: "checkemailexists"
+		      },
+		      password: {
+		        required: true,
+		        strongPassword: true
+		      },
+		      password2: {
+		        required: true,
+		        equalTo: '#password'
+		      },
+		      firstName: {
+		        required: true,
+		        nowhitespace: true,
+		        lettersonly: true
+		      },
+		      secondName: {
+		        required: true,
+		        nowhitespace: true,
+		        lettersonly: true
+		      },
+		      businessName: {
+		        required: true
+		      },
+		      phone: {
+		        required: true,
+		        digits: true,
+		        phonesUK: true
+		      },
+		      address: {
+		        required: true
+		      },
+		      town: {
+		        required: true,
+		        lettersonly: true
+		      },
+		      postcode: {
+		        required: true,
+		        postcodeUK: true
+		      },
+		      terms: {
+		        required: true
+		      }
+		    },
+		    messages: {
+		      email_id: {
+		        required: 'Please enter an email address.',
+		        email: 'Please enter a <em>valid</em> email address.',
+		        remote: $.validator.format("{0} is already associated with an account.")
+		      }
+		    }
+		  });
+		
+		});
+	});
+  </script>
   <script type="text/javascript">
   	$(document).ready(function(){
   		
