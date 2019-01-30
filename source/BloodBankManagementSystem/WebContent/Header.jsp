@@ -20,6 +20,17 @@ Latest compiled JavaScript
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.nav a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('active');
+    });
+</script> 
+  
 </head>
 <body>
 	<div class="container-fluid">
@@ -46,7 +57,8 @@ Latest compiled JavaScript
 			    <form class="form-inline" action="logincheck" method="post">
 			    	
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="home">Home</a></li>
+				      <li><a href="home">Home</a></li>
+				      <li><a href="RegistrationPage.jsp">Register</a></li>
 				      <li>
 				      	<div class="form-group">
 				      		
@@ -64,7 +76,7 @@ Latest compiled JavaScript
 				    		<input name="Submit" value="Login" type="submit" class="form-control">
 				    	</div>	
 				      </li>
-				      <li><a href="RegistrationPage.jsp">Register</a></li>
+				      
 				      <li><h4 class="text-danger">${cookie.error_cookie.value}</h4></li>			      
 				    </ul>
 				    
@@ -84,9 +96,9 @@ Latest compiled JavaScript
 			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="home">Home</a></li>
+			      <li><a href="AboutUs.jsp">About Us</a></li>
 			      <li><a href="upcomingdonationcamps">Upcoming Donation Camps</a></li>
-			       <li><a href="History.jsp">History</a></li>
+			       <li><a href="History.jsp">Activity Summary</a></li>
 			      <li><a href="UpdateProfile.jsp">Profile</a></li>	
 			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 			      
@@ -106,10 +118,9 @@ Latest compiled JavaScript
 			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="home">Home</a></li>
-			      <li><a href="#">Dashboard</a></li>
-			      <li><a href="#">Update Stocks</a></li>
-			     <li><a href="History.jsp">History</a></li>
+			      <li><a href="AboutUs.jsp">Home</a></li>
+			      <li><a href="mystocks">Update Stocks</a></li>
+			     <li><a href="History.jsp">Order Summary</a></li>
 			      <li><a href="UpdateProfile.jsp">Profile</a></li>	
 			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 			      <li><a href="OrganizeDonationCamp.jsp">Organize Donation Camp</a></li>
@@ -128,7 +139,6 @@ Latest compiled JavaScript
 			      <a class="navbar-brand" href="#">Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li class="active"><a href="#">Home</a></li>
 			      <li><a href="AddAdmin.jsp">Add Admin</a></li>
 			      <li><a href="DeleteAdmin.jsp">Remove Admin</a></li>	
 			      <li><a href="RegistrationPage.jsp">Add Hospital/Blood Bank</a></li>

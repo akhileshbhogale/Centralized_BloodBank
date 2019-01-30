@@ -17,9 +17,9 @@
 		$("#update").click(function(){
 			//alert("in funct")
 			alert($("#text_name").html());
-			$("#text_name").html("<input type='text' value='${curr_user.user_name}' />")
-			$("#text_contact").html("<input type='text' value='${curr_user.user_email}'/>")
-			$("#done").html("<input type='button' value='Submit'>")
+			$("#text_name").html("<input type='text' name='user_name' value='${curr_user.user_name}' />")
+			$("#text_contact").html("<input type='text' name='user_contact' value='${curr_user.user_contact}'/>")
+			$("#done").html("<input type='submit' value='Submit'>")
 		})
 	})
 </script>
@@ -32,7 +32,7 @@
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<h3>Your Profile Details are:</h3>
 					</div>
-			<form>
+			<form action="updateprofile">
 				<table border="1" style="border-collapse:collapse;" cellpadding="5" class="table" >
 				
 					<tr>

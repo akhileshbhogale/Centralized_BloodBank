@@ -3,7 +3,7 @@ package model.beans;
 public class StockDetails {
 	
 	String supplier_name,blood_group,blood_bag_type;
-	int price,quantity;
+	int price,quantity,stock_id;
 	public StockDetails() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -15,6 +15,29 @@ public class StockDetails {
 		this.blood_bag_type = blood_bag_type;
 		this.price = price;
 		this.quantity = quantity;
+		this.stock_id=-1;
+	}
+	
+	
+	
+	public StockDetails(String blood_group, String blood_bag_type, int price, int quantity, int stock_id) {
+		super();
+		this.blood_group = blood_group;
+		this.blood_bag_type = blood_bag_type;
+		this.price = price;
+		this.quantity = quantity;
+		this.stock_id = stock_id;
+	}
+	
+	
+	
+	
+	
+	public int getStock_id() {
+		return stock_id;
+	}
+	public void setStock_id(int stock_id) {
+		this.stock_id = stock_id;
 	}
 	public String getSupplier_name() {
 		return supplier_name;
@@ -49,8 +72,9 @@ public class StockDetails {
 	@Override
 	public String toString() {
 		return "StockDetails [supplier_name=" + supplier_name + ", blood_group=" + blood_group + ", blood_bag_type="
-				+ blood_bag_type + ", price=" + price + ", quantity=" + quantity + "]";
+				+ blood_bag_type + ", price=" + price + ", quantity=" + quantity + ", stock_id=" + stock_id + "]";
 	}
+	
 	
 	
 
