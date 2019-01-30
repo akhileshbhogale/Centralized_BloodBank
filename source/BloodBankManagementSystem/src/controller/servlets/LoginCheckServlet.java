@@ -111,6 +111,14 @@ public class LoginCheckServlet extends HttpServlet {
 			{
 				response.sendRedirect("AddAdmin.jsp");
 			}
+			else if(type_id==2 || type_id==3)
+			{
+				response.sendRedirect("mystocks");
+			}
+			else if(type_id==1)
+			{
+				response.sendRedirect("upcomingdonationcamps");
+			}
 			else
 			{
 				response.sendRedirect("home");

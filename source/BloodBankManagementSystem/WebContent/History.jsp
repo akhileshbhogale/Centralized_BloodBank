@@ -15,11 +15,11 @@
 		
 		
 		<div>
-			<a href="donationhistory" class="btn btn-primary btn-inline">Donation History</a>
+			<a href="donationhistory" class="btn btn-primary btn-inline">Donation Summary</a>
 		</div>
 
 		<div>
-			<a href="orderhistory" class="btn btn-primary btn-inline">Order History</a>
+			<a href="orderhistory" class="btn btn-primary btn-inline">Order Summary</a>
 		</div>
 		  
 		  
