@@ -24,7 +24,7 @@
 				    	<td>${camp.camp_venue}</td>
 				    	<td>${camp.camp_date}</td>
 				    	<td>${camp.camp_time}</td>
-				    	<td><button class="btn-info">Register</button></td>
+				    	<td><button class="btn-info">Register</button><input type="hidden" name="camp_id" value="${camp.camp_id}"></td>
 				    </tr>
 				</c:forEach>
 				
