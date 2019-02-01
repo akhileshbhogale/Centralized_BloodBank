@@ -12,15 +12,17 @@
 
 <script src="js/bootstrap.min.js"></script>
 
-<title>AdminAdded</title>
+<title>Registration Success</title>
 </head>
 <body>
+	<div class="container-fluid">
 	<jsp:include page="Header.jsp" />
-	<div style="margin-top: 140px;margin-left: 330px;" class="container-fluid">
-		<div class="row">
-			<div class="col-md-1 col-sm-1 col-xs-12"></div>
+		<div style="margin-top: 140px;" class="row">
+			<div class="col-md-5 col-sm-5 col-xs-12"></div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<h3 style="margin-left: 20px">Account Removed from the System Successfully!!</h3>
+				<h3 style="margin-left: 20px">Registered Successfully!!</h3>
 			</div>
 		</div>
 	</div>
+</body>
+</html>

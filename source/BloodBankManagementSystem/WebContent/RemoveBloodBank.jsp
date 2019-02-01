@@ -14,7 +14,7 @@
 
 <script src="js/bootstrap.min.js"></script>
 
-<title>Remove Hospital</title>
+<title>Remove Blood Bank</title>
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
@@ -22,15 +22,15 @@
 		<div class="row">
 			<div class="col-md-1 col-sm-1 col-xs-12"></div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<h3 style="margin-left: 60px">Remove Hospital</h3>
+				<h3 style="margin-left: 60px">Remove Blood Bank</h3>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-12"></div>
 			<div class="col-md-2 col-sm-2 col-xs-12"></div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<form class="form-container" action="removehospital">
+				<form class="form-container" action="removebloodbank">
 					<div class="form-group">
-						<label for="hospital_email">Hospital email : </label>
-						<input type="email" id="hospital_email" name="hospital_email" class="form-control" />
+						<label for="bb_email">Blood Bank email : </label>
+						<input type="email" id="bb_email" name="bb_email" class="form-control" />
 					</div>
 				 	<div class="form-row">
 						<div class="col-md-2 col-sm-2 col-xs-12"></div>

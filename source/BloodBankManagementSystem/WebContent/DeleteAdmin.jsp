@@ -36,7 +36,7 @@
 						<div class="col-md-2 col-sm-2 col-xs-12"></div>
 							<div style="margin-left: 35px" class="form-group col-md-5 col-sm-5 col-xs-12">
 								<button type="submit" class="btn btn-primary btn-block">Delete</button>
-								<button type="reset" class="btn btn-primary btn-block">Reset</button>
+								<button type="reset" class="btn btn-block">Reset</button>
 							</div>
 					</div>
 				</form>

@@ -38,37 +38,42 @@ public class UpcomingCamps extends HttpServlet {
 		CallableStatement cs=null;
 		ResultSet rs=null;
 		List<UpcomingDonationCamps> camp_list = new ArrayList<>();
-		String email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
 		
-		try {
-			cs=con.prepareCall("{call sp_FetchUpcomingCamps(?)}");
-			
-			cs.setString(1, email);
-			rs=cs.executeQuery();
-			
-			while(rs.next())
-			{
-				UpcomingDonationCamps camp = new UpcomingDonationCamps(rs.getString(1),rs.getString(2),rs.getDate(3),rs.getInt(4));
-				System.out.println(camp);
-				camp_list.add(camp);
-			}
-						
-			request.getSession().setAttribute("camp_list",camp_list);
-			System.out.println(camp_list);
-			request.getRequestDispatcher("/ShowDonationCamps.jsp").forward(request, response);
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
+		if(request.getSession().getAttribute("curr_user")!=null)
 		{
+			
+			String email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
+			
 			try {
-				rs.close();
-				cs.close();
+				cs=con.prepareCall("{call sp_FetchUpcomingCamps(?)}");
+				
+				cs.setString(1, email);
+				rs=cs.executeQuery();
+				
+				while(rs.next())
+				{
+					UpcomingDonationCamps camp = new UpcomingDonationCamps(rs.getString(1),rs.getString(2),rs.getDate(3),rs.getInt(4));
+					System.out.println(camp);
+					camp_list.add(camp);
+				}
+							
+				request.getSession().setAttribute("camp_list",camp_list);
+				System.out.println(camp_list);
+				request.getRequestDispatcher("/ShowDonationCamps.jsp").forward(request, response);
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			finally
+			{
+				try {
+					rs.close();
+					cs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

@@ -109,14 +109,14 @@ $(document).ready(function () {
       $("#cnfm_pwd").blur(function () {
     	  //alert("hi");
           var cnfm_pwdresult = $("#cnfm_pwd").val();
-          alert(cnfm_pwdresult);
+          //alert(cnfm_pwdresult);
           var pwdresult = $("#pwd").val();
-          alert(pwdresult);
-          alert(cnfm_pwdresult!= pwdresult);
+          //alert(pwdresult);
+          //alert(cnfm_pwdresult!= pwdresult);
           //var cnfm_pwdreg = /[^a-zA-Z0-9]{1,32}$/l;
           //var cnfm_pwd_validate = pwdresult;
           if (cnfm_pwdresult!= pwdresult) {
-              alert('Password should match ');
+              //alert('Password should match ');
               $("#cnfm_pwd_error").text("Password should match");
           }
           if (cnfm_pwd= pwdresult) {

@@ -82,12 +82,34 @@
 			
 
 				<form class="form-container" action="organizeDonationCamp" >
-					<div class="form-group">
-						<label for="donation_camp_venue">Venue : </label>
-						<input type="text" name="donation_camp_venue" id="donation_camp_venue" class="form-control" />
+				<div class="form-group">
+						<label for="donation_camp_city">City : </label>
+						<select name="donation_camp_city" required class="form-control">
+							<option value="Pune" selected="selected">Pune</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label for="donation_camp_date">Date : </label>
+						<label for="donation_camp_venue">Venue : </label>
+						<select name="donation_camp_venue" required="required" class="form-control">
+							<option value="Kothrud">Kothrud</option>
+							<option value="Shaniwarwada">Shaniwarwada</option>
+							<option value="Pimpri">Pimpri</option>
+							<option value="Chinchwad">Chinchwad</option>
+							<option value="SB road">SB road</option>
+							<option value="Nall Stop">Nall Stop</option>
+							<option value="Akurdi">Akurdi</option>
+							<option value="Shivajinagar">Shivajinagar</option>
+							<option value="Vadgaon">Vadgaon</option>
+							<option value="Katraj">Katraj</option>
+							<option value="Khondwa">Khondwa</option>
+							<option value="Warje">Warje</option>
+							<option value="Baner">Baner</option>
+							<option value="Aundh">Aundh</option>
+							<option value="Hadapsar">Hadapsar</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="donation_camp_date" required>Date : </label>
 						<div class="datepicker" data-date-start-date="+1d">
 							<input type="date" min="2019-01-25" name="donation_camp_date"  id="donation_camp_date" class="form-control" />
 						</div>

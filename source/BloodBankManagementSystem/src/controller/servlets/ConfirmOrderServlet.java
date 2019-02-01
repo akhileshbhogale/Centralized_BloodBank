@@ -112,6 +112,8 @@ public class ConfirmOrderServlet extends HttpServlet {
 					}
 					else
 					{
+						try
+						{
 						cs3=con.prepareCall("{call sp_AddOrders(?,?,?,?,?,?,?,?)}");
 						cs3.setInt(1, order_id);
 						cs3.setString(2, u_email);
@@ -124,6 +126,23 @@ public class ConfirmOrderServlet extends HttpServlet {
 						cs3.setString(7, "DELIVERY");
 						cs3.setInt(8, Integer.parseInt(request.getParameter("address")));
 						int num=cs3.executeUpdate();
+						}
+						catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						finally
+						{
+							try {
+								
+								cs3.close();
+								
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						}
 					}
 					
 					
@@ -144,7 +163,7 @@ public class ConfirmOrderServlet extends HttpServlet {
 				rs2.close();
 				cs1.close();
 				cs2.close();
-				cs3.close();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
