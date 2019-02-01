@@ -3,7 +3,6 @@ package controller.servlets;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletConfig;
@@ -13,11 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/deleteAdmin")
-public class DeleteAdminServlet extends HttpServlet {
-private static final long serialVersionUID = 1L;
-	
-    Connection con;
+
+@WebServlet("/removehospital")
+public class RemoveHospitalServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	Connection con;
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -25,29 +25,35 @@ private static final long serialVersionUID = 1L;
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		CallableStatement cs=null;
+		CallableStatement cs1=null;
+		CallableStatement cs2=null;
 		//ResultSet rs=null;
 
 	try {
-		//LoginDetails admin = new LoginDetails(4,request.getParameter("admin_email"),request.getParameter("admin_password"));
-		//System.out.println(admin);
-		try {
-			cs=con.prepareCall("{call sp_DeleteFromLoginDetails(?)}");
-			cs.setString(1, request.getParameter("admin_email"));
-			int n = cs.executeUpdate();
-			System.out.println("Admin Deleted");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
+			cs1=con.prepareCall("{call sp_DeleteFromLoginDetails(?)}");
+			cs1.setString(1, request.getParameter("hospital_email"));
+			int n = cs1.executeUpdate();
+			
+			
+			cs2=con.prepareCall("{call sp_DeleteHospital(?)}");
+			cs2.setString(1, request.getParameter("hospital_email"));
+			n = cs2.executeUpdate();
+			
+			System.out.println("Hospital Deleted");
 		
 		
 		
-		request.getRequestDispatcher("/AdminDeleted.jsp").forward(request, response);
+		
+			request.getRequestDispatcher("/AdminDeleted.jsp").forward(request, response);
+	}
+	catch (SQLException e) {
+		// TODO: handle exception
 	}
 	finally{
 		try {
-			cs.close();
+			cs1.close();
 			} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block

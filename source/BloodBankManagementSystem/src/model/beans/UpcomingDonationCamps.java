@@ -6,6 +6,7 @@ public class UpcomingDonationCamps {
 	
 	String camp_venue,camp_time;
 	Date camp_date;
+	int camp_id;
 	public UpcomingDonationCamps() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -15,6 +16,25 @@ public class UpcomingDonationCamps {
 		this.camp_venue = camp_venue;
 		this.camp_time = camp_time;
 		this.camp_date = camp_date;
+	}
+	
+	
+	
+	public UpcomingDonationCamps(String camp_venue, String camp_time, Date camp_date, int camp_id) {
+		super();
+		this.camp_venue = camp_venue;
+		this.camp_time = camp_time;
+		this.camp_date = camp_date;
+		this.camp_id = camp_id;
+	}
+	
+	
+	
+	public int getCamp_id() {
+		return camp_id;
+	}
+	public void setCamp_id(int camp_id) {
+		this.camp_id = camp_id;
 	}
 	public String getCamp_venue() {
 		return camp_venue;
@@ -36,10 +56,11 @@ public class UpcomingDonationCamps {
 	}
 	@Override
 	public String toString() {
-		return "UpcomingCamps [camp_venue=" + camp_venue + ", camp_time=" + camp_time + ", camp_date=" + camp_date
-				+ "]";
+		return "UpcomingDonationCamps [camp_venue=" + camp_venue + ", camp_time=" + camp_time + ", camp_date="
+				+ camp_date + ", camp_id=" + camp_id + "]";
 	}
-
+	
+	
 		
 	
 
