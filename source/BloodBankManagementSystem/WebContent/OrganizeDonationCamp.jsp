@@ -6,25 +6,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Organize Camp</title>
 
-
+<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
+ -->
 
 
-<!--
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="jquery-3.3.1.min.js"></script>
-<script src="jquery.validate.min.js"></script>
+
   
 <script src="jquery-ui.min.js"></script>
 
 <script src="bootstrap.min.js"></script>
 
 
- 
+ <!-- 
 <script>
 	$(document).ready(function(){
 		alert("Hii");
@@ -36,13 +36,37 @@
 		});
 	});
 </script>
- -->
+
 
 
 <script >
 	var today = new Date().toISOString().split('T')[0];
 	$("#donation_camp_date").attr("min","2019-01-30");
 	
+</script>
+ -->
+ 
+ 
+<script>
+	$(document).ready(function() {
+		//alert("ready")
+		$("#donation_camp_date").click(function(){
+			//alert("in function")
+		    var dtToday = new Date();
+		    var month = dtToday.getMonth() + 1;
+		    var day = dtToday.getDate();
+		    var year = dtToday.getFullYear();
+			
+		    if(month < 10)
+		        month = '0' + month.toString();
+		    if(day < 10)
+		        day = '0' + day.toString();
+			
+		    var minDate = year + '-' + month + '-' + day;    
+		    $('#donation_camp_date').attr('min', minDate);
+		})
+});
+
 </script>
 
 </head>

@@ -141,8 +141,10 @@ Latest compiled JavaScript
 			    <ul class="nav navbar-nav">
 			      <li><a href="AddAdmin.jsp">Add Admin</a></li>
 			      <li><a href="DeleteAdmin.jsp">Remove Admin</a></li>	
-			      <li><a href="RegistrationPage.jsp">Add Hospital/Blood Bank</a></li>
-			      <li><a href="#">Remove Hospital/Blood Bank</a></li>
+			      <li><a href="AddHospital.jsp">Add Hospital</a></li>
+			      <li><a href="RemoveHospital.jsp">Remove Hospital</a></li>
+			      <li><a href="AddBloodBank.jsp">Add Blood Bank</a></li>			      
+			      <li><a href="#">Remove Blood Bank</a></li>
 			      <li><a href="logout">Logout</a></li>		      
 			    </ul>
 			  

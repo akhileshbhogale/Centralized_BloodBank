@@ -15,10 +15,10 @@
 <title>AdminAdded</title>
 </head>
 <body>
-	<div style="margin-top: 140px;margin-left: 330px;" class="container-fluid">
+	<div class="container-fluid">
 	<jsp:include page="Header.jsp" />
-		<div class="row">
-			<div class="col-md-1 col-sm-1 col-xs-12"></div>
+		<div style="margin-top: 140px;" class="row">
+			<div class="col-md-5 col-sm-5 col-xs-12"></div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<h3 style="margin-left: 20px">Admin Added Successfully!!</h3>
 			</div>

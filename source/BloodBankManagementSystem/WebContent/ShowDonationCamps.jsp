@@ -18,17 +18,20 @@
 		<jsp:include page="Header.jsp" />
 		<div class="jumbotron">
 			<h1>Upcoming Donation Camps</h1>
-			<table class="table table-striped">
-			<c:forEach items="${camp_list}" var="camp">
-				    <tr>
-				    	<td>${camp.camp_venue}</td>
-				    	<td>${camp.camp_date}</td>
-				    	<td>${camp.camp_time}</td>
-				    	<td><button class="btn-info">Register</button><input type="hidden" name="camp_id" value="${camp.camp_id}"></td>
-				    </tr>
-				</c:forEach>
-				
-			</table>
+			<form action="registerfordonationcamp">
+			<span class="text-success">${registeredforcamp }</span>
+				<table class="table table-striped">
+				<c:forEach items="${camp_list}" var="camp">
+					    <tr>
+					    	<td>${camp.camp_venue}</td>
+					    	<td>${camp.camp_date}</td>
+					    	<td>${camp.camp_time}</td>
+					    	<td><button type="submit" value="Submit" class="btn-info">Register</button><input type="hidden" name="camp_id" value="${camp.camp_id}"></td>
+					    </tr>
+					</c:forEach>
+					
+				</table>
+			</form>
 		</div>
 	</div>
 </body>

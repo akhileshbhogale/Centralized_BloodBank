@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.OrderHistory;
-import model.beans.UpdateProfile;
+import model.beans.Users;
 
 
 @WebServlet("/orderhistory")
@@ -36,14 +36,12 @@ public class OrderHistoryServlet extends HttpServlet {
 		CallableStatement cs1=null;
 		ResultSet rs1=null;
 		List<OrderHistory> order_history_list = new ArrayList<>();
-		
+		String u_email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
 		
 		try {
-			cs=con.prepareCall("{call sp_FetchHospitalOrderHistory(?)}");
-			//cs.setString(1,(String)request.getSession().getAttribute("u_email"));
-			/*cs.setString(2,(String)request.getSession().getAttribute("u_email"));*/
+			cs=con.prepareCall("{call sp_FetchOrderHistoryFromHospital(?)}");
+			cs.setString(1,u_email);
 			
-			cs.setString(1,"tanjulr@gmail.com");
 			
 			rs=cs.executeQuery();
 			
@@ -54,11 +52,8 @@ public class OrderHistoryServlet extends HttpServlet {
 				order_history_list.add(ohistory);
 			}
 				
-			cs1=con.prepareCall("{call sp_BloodBankOrderHistory(?)}");
-			cs.setString(1,(String)request.getSession().getAttribute("u_email"));
-			/*cs.setString(2,(String)request.getSession().getAttribute("u_email"));*/
-			
-			//cs.setString(1,"tanjulr@gmail.com");
+			cs1=con.prepareCall("{call sp_FetchOrderHistoryFromBloodBank(?)}");
+			cs1.setString(1,u_email);
 			
 			rs1=cs1.executeQuery();
 			
@@ -69,7 +64,7 @@ public class OrderHistoryServlet extends HttpServlet {
 				order_history_list.add(ohistory);
 			}
 			
-			request.getSession().setAttribute("profile_list",order_history_list);
+			request.getSession().setAttribute("order_history_list",order_history_list);
 			System.out.println(order_history_list);
 			request.getRequestDispatcher("/OrderHistory.jsp").forward(request, response);
 			
@@ -82,6 +77,8 @@ public class OrderHistoryServlet extends HttpServlet {
 			try {
 				rs.close();
 				cs.close();
+				rs1.close();
+				cs1.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

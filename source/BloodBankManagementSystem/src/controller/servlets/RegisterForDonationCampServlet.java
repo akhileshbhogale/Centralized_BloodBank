@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,26 +32,22 @@ public class RegisterForDonationCampServlet extends HttpServlet {
 		
 		CallableStatement cs=null;
 		
-		String []camp_id_list=request.getParameterValues("camp_id");
+		//String []camp_id_list=request.getParameterValues("camp_id");
 		String email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
 		
-		for(int i=0;i<camp_id_list.length;i++)
-		{
-			
 		
-			
 			
 			try {
 				
 				
 				cs=con.prepareCall("{call sp_RegisterForCamp(?,?)}");
-				cs.setInt(1, Integer.parseInt(camp_id_list[i]));
+				cs.setInt(1, Integer.parseInt(request.getParameter("camp_id")));
 				cs.setString(2, email);
 				
 				
 				cs.executeUpdate();
-				
-				
+				Cookie c= new Cookie("registeredforcamp", "Succesfuly_Registered_for_the_Camp");
+				response.addCookie(c);
 				
 				
 				
@@ -70,9 +67,8 @@ public class RegisterForDonationCampServlet extends HttpServlet {
 				}
 				
 			}
-		}
 		
-		response.sendRedirect("mystocks");
+		response.sendRedirect("upcomingdonationcamps");
 		
 	}
 

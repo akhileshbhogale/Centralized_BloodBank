@@ -18,7 +18,7 @@
 <body>
 <div class="container-fluid">
 		
-		
+		<jsp:include page="Header.jsp" />
 		<div class="page-header">
 		  <h3>Your Order Summary</h3>
 		</div>
@@ -34,7 +34,7 @@
 					
 					</tr>
 					
-					<c:forEach items="${order_history_list}" var="camp">
+					<c:forEach items="${order_history_list}" var="ohistory">
 					
 						    <tr>
 						    	<td>${ohistory.name}</td>
@@ -42,7 +42,7 @@
 						    	<td>${ohistory.bloodbagtype}</td>
 						    	<td>${ohistory.quantity}</td>
 						    	<td>${ohistory.price}</td>
-						    	<td>${ohistory.date}</td>
+						    	<td>${ohistory.order_date}</td>
 						    	
 						    </tr>
 						</c:forEach>

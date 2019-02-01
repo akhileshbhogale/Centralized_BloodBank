@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.UpcomingDonationCamps;
+import model.beans.Users;
 
 
 
@@ -37,10 +38,12 @@ public class UpcomingCamps extends HttpServlet {
 		CallableStatement cs=null;
 		ResultSet rs=null;
 		List<UpcomingDonationCamps> camp_list = new ArrayList<>();
-		
+		String email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
 		
 		try {
-			cs=con.prepareCall("{call sp_FetchUpcomingCamps()}");
+			cs=con.prepareCall("{call sp_FetchUpcomingCamps(?)}");
+			
+			cs.setString(1, email);
 			rs=cs.executeQuery();
 			
 			while(rs.next())
