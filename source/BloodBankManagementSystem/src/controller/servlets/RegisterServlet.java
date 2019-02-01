@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
 			int n3=cs3.executeUpdate();
 			
 			
-			response.sendRedirect("home");
+			response.sendRedirect("RegisteredSuccessfullyMessage.jsp");
 			
 			
 		} catch (SQLException e) {

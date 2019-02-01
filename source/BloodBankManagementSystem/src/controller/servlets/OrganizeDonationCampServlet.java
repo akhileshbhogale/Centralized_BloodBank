@@ -39,7 +39,7 @@ public class OrganizeDonationCampServlet extends HttpServlet {
 		{
 			CallableStatement cs=null;
 			
-			
+			String camp_city=request.getParameter("donation_camp_city");
 			String camp_venue=request.getParameter("donation_camp_venue");
 			String camp_date=request.getParameter("donation_camp_date");
 			String camp_time =request.getParameter("donation_camp_time");
@@ -50,11 +50,12 @@ public class OrganizeDonationCampServlet extends HttpServlet {
 			
 				try {
 					String user_email=((Users)request.getSession().getAttribute("curr_user")).getUser_email();
-					cs=con.prepareCall("{call sp_OrganizeCamp(?,?,?,?)}");
+					cs=con.prepareCall("{call sp_OrganizeCamp(?,?,?,?,?)}");
 					cs.setString(1, user_email);
 					cs.setString(2, camp_venue);
 					cs.setString(3, camp_date);				
 					cs.setString(4, camp_time);
+					cs.setString(5, camp_city);
 					int n = cs.executeUpdate();
 					
 					request.getRequestDispatcher("/CampAdded.jsp").forward(request, response);

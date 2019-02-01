@@ -149,8 +149,9 @@ $(document).ready(function () {
 							
 							<div class="radio">
 								<c:forEach items="${address_list}" var="add">
-									<input type="radio" name=address value="${add.address_id}" class="address_radio" required>${add.address}<br/>
+									<input type="radio" name=address value="${add.address_id}" class="address_radio">${add.address}<br/>
 								</c:forEach>
+									<!-- <input type="hidden" name="address" value="-1"> --> 
 							</div>
 						</div>
 					</div>

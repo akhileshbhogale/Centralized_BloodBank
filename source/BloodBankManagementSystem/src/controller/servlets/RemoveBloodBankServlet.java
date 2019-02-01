@@ -34,15 +34,15 @@ public class RemoveBloodBankServlet extends HttpServlet {
 		
 		
 			cs1=con.prepareCall("{call sp_DeleteFromLoginDetails(?)}");
-			cs1.setString(1, request.getParameter("hospital_email"));
+			cs1.setString(1, request.getParameter("bb_email"));
 			int n = cs1.executeUpdate();
 			
 			
-			cs2=con.prepareCall("{call sp_DeleteHospital(?)}");
-			cs2.setString(1, request.getParameter("hospital_email"));
+			cs2=con.prepareCall("{call sp_DeleteBloodBank(?)}");
+			cs2.setString(1, request.getParameter("bb_email"));
 			n = cs2.executeUpdate();
 			
-			System.out.println("Hospital Deleted");
+			System.out.println("Blood Bank Deleted");
 		
 		
 		

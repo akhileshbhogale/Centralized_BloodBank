@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>Centralized Blood Bank</title>
 <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
 
 jQuery library
@@ -52,12 +52,13 @@ Latest compiled JavaScript
 			<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
+			      <a class="navbar-brand" href="AboutUs.jsp">Centralized Blood Bank</a>
 			    </div>
 			    <form class="form-inline" action="logincheck" method="post">
 			    	
 				    <ul class="nav navbar-nav">
 				      <li><a href="home">Home</a></li>
+				      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 				      <li><a href="RegistrationPage.jsp">Register</a></li>
 				      <li>
 				      	<div class="form-group">
@@ -93,7 +94,7 @@ Latest compiled JavaScript
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
+			      <a class="navbar-brand" href="AboutUs.jsp">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li><a href="AboutUs.jsp">About Us</a></li>
@@ -115,12 +116,12 @@ Latest compiled JavaScript
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Centralized Blood Bank</a>
+			      <a class="navbar-brand" href="AboutUs.jsp">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li><a href="AboutUs.jsp">Home</a></li>
 			      <li><a href="mystocks">Update Stocks</a></li>
-			     <li><a href="History.jsp">Order Summary</a></li>
+			     <li><a href="orderhistory">Order Summary</a></li>
 			      <li><a href="UpdateProfile.jsp">Profile</a></li>	
 			      <li><a href="ViewStocks.jsp">View Stocks</a></li>
 			      <li><a href="OrganizeDonationCamp.jsp">Organize Donation Camp</a></li>
@@ -136,7 +137,7 @@ Latest compiled JavaScript
 				<nav class="navbar navbar-default">
 			  	
 			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#">Blood Bank</a>
+			      <a class="navbar-brand" href="AboutUs.jsp">Centralized Blood Bank</a>
 			    </div>
 			    <ul class="nav navbar-nav">
 			      <li><a href="AddAdmin.jsp">Add Admin</a></li>
@@ -144,7 +145,7 @@ Latest compiled JavaScript
 			      <li><a href="AddHospital.jsp">Add Hospital</a></li>
 			      <li><a href="RemoveHospital.jsp">Remove Hospital</a></li>
 			      <li><a href="AddBloodBank.jsp">Add Blood Bank</a></li>			      
-			      <li><a href="#">Remove Blood Bank</a></li>
+			      <li><a href="RemoveBloodBank.jsp">Remove Blood Bank</a></li>
 			      <li><a href="logout">Logout</a></li>		      
 			    </ul>
 			  

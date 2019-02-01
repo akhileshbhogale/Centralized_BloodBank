@@ -24,11 +24,11 @@ import model.beans.BloodGroups;
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	Connection con;
+	//Connection con;
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		con = (Connection) config.getServletContext().getAttribute("dbcon");
+		//con = (Connection) config.getServletContext().getAttribute("dbcon");
 	}
 
 	
@@ -81,7 +81,7 @@ public class HomeServlet extends HttpServlet {
 			
 		}*/
 		
-		request.getRequestDispatcher("/ViewStocks.jsp").forward(request, response);
+		request.getRequestDispatcher("/AboutUs.jsp").forward(request, response);
 		
 	}
 
